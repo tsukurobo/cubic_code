@@ -1,0 +1,7 @@
+[01m[K/home/shoh/cubic_code/src/pwm/src/pwm.cpp:6:10:[m[K [01;31m[Kfatal error: [m[Kmsg/pwm.h: そのようなファイルやディレクトリはありません
+ #include [01;31m[K"msg/pwm.h"[m[K
+          [01;31m[K^~~~~~~~~~~[m[K
+compilation terminated.
+make[2]: *** [CMakeFiles/pwm.dir/src/pwm.cpp.o] Error 1
+make[1]: *** [CMakeFiles/pwm.dir/all] Error 2
+make: *** [all] Error 2

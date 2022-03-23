@@ -1,0 +1,8 @@
+prefix=/home/shoh/cubic_code/devel/.private/pwm
+
+Name: pwm
+Description: Description of pwm
+Version: 0.0.0
+Cflags: -I/home/shoh/cubic_code/devel/.private/pwm/include
+Libs: -L${prefix}/lib 
+Requires: 
