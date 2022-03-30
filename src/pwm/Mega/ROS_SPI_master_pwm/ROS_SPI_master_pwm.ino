@@ -7,6 +7,8 @@
 #include <ros.h>
 #include <pwm/pwm.h>
 
+#define ENABLE_PIN 2
+
 // PWM出力のパラメータ初期値
 // pwm出力の有無：0で停止，1で出力　周波数(kHz)：20,30,...,60　Duty比(%)：0～100
 byte buf[3] = {0,30,50};
@@ -24,6 +26,8 @@ void get_order(const pwm::pwm& order) {
 ros::Subscriber<pwm::pwm> sub_order("pwm", get_order);
 
 void setup() {
+  digitalWrite(ENABLE_PIN, HIGH); // 動作開始
+  
   //nh.getHardware()->setBaud(115200);
   nh.initNode();
 
