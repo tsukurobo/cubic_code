@@ -1,3 +1,2 @@
-int8 on_off
-int8 freq
-int8 duty
+uint8 dire
+uint8 duty

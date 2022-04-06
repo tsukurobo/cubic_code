@@ -8,15 +8,14 @@ import struct
 
 
 class pwm(genpy.Message):
-  _md5sum = "20babff89d56b350c03c58fd594a9cef"
+  _md5sum = "dfc315b3736129b536317ba30fa832a1"
   _type = "pwm/pwm"
   _has_header = False  # flag to mark the presence of a Header object
-  _full_text = """int8 on_off
-int8 freq
-int8 duty
+  _full_text = """uint8 dire
+uint8 duty
 """
-  __slots__ = ['on_off','freq','duty']
-  _slot_types = ['int8','int8','int8']
+  __slots__ = ['dire','duty']
+  _slot_types = ['uint8','uint8']
 
   def __init__(self, *args, **kwds):
     """
@@ -26,7 +25,7 @@ int8 duty
     changes.  You cannot mix in-order arguments and keyword arguments.
 
     The available fields are:
-       on_off,freq,duty
+       dire,duty
 
     :param args: complete set of field values, in .msg order
     :param kwds: use keyword arguments corresponding to message field names
@@ -35,15 +34,12 @@ int8 duty
     if args or kwds:
       super(pwm, self).__init__(*args, **kwds)
       # message fields cannot be None, assign default values for those that are
-      if self.on_off is None:
-        self.on_off = 0
-      if self.freq is None:
-        self.freq = 0
+      if self.dire is None:
+        self.dire = 0
       if self.duty is None:
         self.duty = 0
     else:
-      self.on_off = 0
-      self.freq = 0
+      self.dire = 0
       self.duty = 0
 
   def _get_types(self):
@@ -59,7 +55,7 @@ int8 duty
     """
     try:
       _x = self
-      buff.write(_get_struct_3b().pack(_x.on_off, _x.freq, _x.duty))
+      buff.write(_get_struct_2B().pack(_x.dire, _x.duty))
     except struct.error as se: self._check_types(struct.error("%s: '%s' when writing '%s'" % (type(se), str(se), str(locals().get('_x', self)))))
     except TypeError as te: self._check_types(ValueError("%s: '%s' when writing '%s'" % (type(te), str(te), str(locals().get('_x', self)))))
 
@@ -73,8 +69,8 @@ int8 duty
       end = 0
       _x = self
       start = end
-      end += 3
-      (_x.on_off, _x.freq, _x.duty,) = _get_struct_3b().unpack(str[start:end])
+      end += 2
+      (_x.dire, _x.duty,) = _get_struct_2B().unpack(str[start:end])
       return self
     except struct.error as e:
       raise genpy.DeserializationError(e)  # most likely buffer underfill
@@ -88,7 +84,7 @@ int8 duty
     """
     try:
       _x = self
-      buff.write(_get_struct_3b().pack(_x.on_off, _x.freq, _x.duty))
+      buff.write(_get_struct_2B().pack(_x.dire, _x.duty))
     except struct.error as se: self._check_types(struct.error("%s: '%s' when writing '%s'" % (type(se), str(se), str(locals().get('_x', self)))))
     except TypeError as te: self._check_types(ValueError("%s: '%s' when writing '%s'" % (type(te), str(te), str(locals().get('_x', self)))))
 
@@ -103,8 +99,8 @@ int8 duty
       end = 0
       _x = self
       start = end
-      end += 3
-      (_x.on_off, _x.freq, _x.duty,) = _get_struct_3b().unpack(str[start:end])
+      end += 2
+      (_x.dire, _x.duty,) = _get_struct_2B().unpack(str[start:end])
       return self
     except struct.error as e:
       raise genpy.DeserializationError(e)  # most likely buffer underfill
@@ -113,9 +109,9 @@ _struct_I = genpy.struct_I
 def _get_struct_I():
     global _struct_I
     return _struct_I
-_struct_3b = None
-def _get_struct_3b():
-    global _struct_3b
-    if _struct_3b is None:
-        _struct_3b = struct.Struct("<3b")
-    return _struct_3b
+_struct_2B = None
+def _get_struct_2B():
+    global _struct_2B
+    if _struct_2B is None:
+        _struct_2B = struct.Struct("<2B")
+    return _struct_2B

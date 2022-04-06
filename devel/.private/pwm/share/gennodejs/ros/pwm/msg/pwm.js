@@ -18,22 +18,15 @@ class pwm {
   constructor(initObj={}) {
     if (initObj === null) {
       // initObj === null is a special case for deserialization where we don't initialize fields
-      this.on_off = null;
-      this.freq = null;
+      this.dire = null;
       this.duty = null;
     }
     else {
-      if (initObj.hasOwnProperty('on_off')) {
-        this.on_off = initObj.on_off
+      if (initObj.hasOwnProperty('dire')) {
+        this.dire = initObj.dire
       }
       else {
-        this.on_off = 0;
-      }
-      if (initObj.hasOwnProperty('freq')) {
-        this.freq = initObj.freq
-      }
-      else {
-        this.freq = 0;
+        this.dire = 0;
       }
       if (initObj.hasOwnProperty('duty')) {
         this.duty = initObj.duty
@@ -46,12 +39,10 @@ class pwm {
 
   static serialize(obj, buffer, bufferOffset) {
     // Serializes a message object of type pwm
-    // Serialize message field [on_off]
-    bufferOffset = _serializer.int8(obj.on_off, buffer, bufferOffset);
-    // Serialize message field [freq]
-    bufferOffset = _serializer.int8(obj.freq, buffer, bufferOffset);
+    // Serialize message field [dire]
+    bufferOffset = _serializer.uint8(obj.dire, buffer, bufferOffset);
     // Serialize message field [duty]
-    bufferOffset = _serializer.int8(obj.duty, buffer, bufferOffset);
+    bufferOffset = _serializer.uint8(obj.duty, buffer, bufferOffset);
     return bufferOffset;
   }
 
@@ -59,17 +50,15 @@ class pwm {
     //deserializes a message object of type pwm
     let len;
     let data = new pwm(null);
-    // Deserialize message field [on_off]
-    data.on_off = _deserializer.int8(buffer, bufferOffset);
-    // Deserialize message field [freq]
-    data.freq = _deserializer.int8(buffer, bufferOffset);
+    // Deserialize message field [dire]
+    data.dire = _deserializer.uint8(buffer, bufferOffset);
     // Deserialize message field [duty]
-    data.duty = _deserializer.int8(buffer, bufferOffset);
+    data.duty = _deserializer.uint8(buffer, bufferOffset);
     return data;
   }
 
   static getMessageSize(object) {
-    return 3;
+    return 2;
   }
 
   static datatype() {
@@ -79,15 +68,14 @@ class pwm {
 
   static md5sum() {
     //Returns md5sum for a message object
-    return '20babff89d56b350c03c58fd594a9cef';
+    return 'dfc315b3736129b536317ba30fa832a1';
   }
 
   static messageDefinition() {
     // Returns full string definition for message
     return `
-    int8 on_off
-    int8 freq
-    int8 duty
+    uint8 dire
+    uint8 duty
     
     `;
   }
@@ -98,18 +86,11 @@ class pwm {
       msg = {};
     }
     const resolved = new pwm(null);
-    if (msg.on_off !== undefined) {
-      resolved.on_off = msg.on_off;
+    if (msg.dire !== undefined) {
+      resolved.dire = msg.dire;
     }
     else {
-      resolved.on_off = 0
-    }
-
-    if (msg.freq !== undefined) {
-      resolved.freq = msg.freq;
-    }
-    else {
-      resolved.freq = 0
+      resolved.dire = 0
     }
 
     if (msg.duty !== undefined) {

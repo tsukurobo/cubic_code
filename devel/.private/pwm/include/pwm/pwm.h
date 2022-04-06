@@ -24,26 +24,21 @@ struct pwm_
   typedef pwm_<ContainerAllocator> Type;
 
   pwm_()
-    : on_off(0)
-    , freq(0)
+    : dire(0)
     , duty(0)  {
     }
   pwm_(const ContainerAllocator& _alloc)
-    : on_off(0)
-    , freq(0)
+    : dire(0)
     , duty(0)  {
   (void)_alloc;
     }
 
 
 
-   typedef int8_t _on_off_type;
-  _on_off_type on_off;
+   typedef uint8_t _dire_type;
+  _dire_type dire;
 
-   typedef int8_t _freq_type;
-  _freq_type freq;
-
-   typedef int8_t _duty_type;
+   typedef uint8_t _duty_type;
   _duty_type duty;
 
 
@@ -75,8 +70,7 @@ return s;
 template<typename ContainerAllocator1, typename ContainerAllocator2>
 bool operator==(const ::pwm::pwm_<ContainerAllocator1> & lhs, const ::pwm::pwm_<ContainerAllocator2> & rhs)
 {
-  return lhs.on_off == rhs.on_off &&
-    lhs.freq == rhs.freq &&
+  return lhs.dire == rhs.dire &&
     lhs.duty == rhs.duty;
 }
 
@@ -134,12 +128,12 @@ struct MD5Sum< ::pwm::pwm_<ContainerAllocator> >
 {
   static const char* value()
   {
-    return "20babff89d56b350c03c58fd594a9cef";
+    return "dfc315b3736129b536317ba30fa832a1";
   }
 
   static const char* value(const ::pwm::pwm_<ContainerAllocator>&) { return value(); }
-  static const uint64_t static_value1 = 0x20babff89d56b350ULL;
-  static const uint64_t static_value2 = 0xc03c58fd594a9cefULL;
+  static const uint64_t static_value1 = 0xdfc315b3736129b5ULL;
+  static const uint64_t static_value2 = 0x36317ba30fa832a1ULL;
 };
 
 template<class ContainerAllocator>
@@ -158,9 +152,8 @@ struct Definition< ::pwm::pwm_<ContainerAllocator> >
 {
   static const char* value()
   {
-    return "int8 on_off\n"
-"int8 freq\n"
-"int8 duty\n"
+    return "uint8 dire\n"
+"uint8 duty\n"
 ;
   }
 
@@ -179,8 +172,7 @@ namespace serialization
   {
     template<typename Stream, typename T> inline static void allInOne(Stream& stream, T m)
     {
-      stream.next(m.on_off);
-      stream.next(m.freq);
+      stream.next(m.dire);
       stream.next(m.duty);
     }
 
@@ -200,12 +192,10 @@ struct Printer< ::pwm::pwm_<ContainerAllocator> >
 {
   template<typename Stream> static void stream(Stream& s, const std::string& indent, const ::pwm::pwm_<ContainerAllocator>& v)
   {
-    s << indent << "on_off: ";
-    Printer<int8_t>::stream(s, indent + "  ", v.on_off);
-    s << indent << "freq: ";
-    Printer<int8_t>::stream(s, indent + "  ", v.freq);
+    s << indent << "dire: ";
+    Printer<uint8_t>::stream(s, indent + "  ", v.dire);
     s << indent << "duty: ";
-    Printer<int8_t>::stream(s, indent + "  ", v.duty);
+    Printer<uint8_t>::stream(s, indent + "  ", v.duty);
   }
 };
 

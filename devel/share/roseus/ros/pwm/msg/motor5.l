@@ -1,0 +1,1 @@
+/home/shoh/cubic_code/devel/.private/pwm/share/roseus/ros/pwm/msg/motor5.l
