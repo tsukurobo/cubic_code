@@ -4,6 +4,9 @@
 // MOSI 51
 // SCK 52
 // SS 53
+
+SPISettings mySPISettings = SPISettings(8000000, MSBFIRST, SPI_MODE0);
+
 #include <ros.h>
 #include <pwm/pwm.h>
 
@@ -89,7 +92,7 @@ void setup() {
   nh.subscribe(sub_order7);
   
   SPI.begin(); //SPI通信開始
-  SPI.setClockDivider(SPI_CLOCK_DIV8); // SPI通信速度を1MHzに設定
+  SPI.setClockDivider(SPI_CLOCK_DIV2); // SPI通信速度を8MHzに設定
   pinMode(SS,OUTPUT); // SSピンを出力用に設定
   digitalWrite(SS,HIGH); //通信状態を非アクティブに
 }
@@ -97,14 +100,22 @@ void setup() {
 void loop() {
   nh.spinOnce();
   
-  //digitalWrite(SS,LOW); //通信状態をアクティブに
+  SPI.beginTransaction(mySPISettings);
+
+  // パリティバイトとして255を送る。
+  digitalWrite(SS,LOW); //通信状態をアクティブに
+  SPI.transfer(255);
+  digitalWrite(SS,HIGH); //通信状態を非アクティブに
+  
   for (int i = 0; i < 16; i++) {
     digitalWrite(SS,LOW); //通信状態をアクティブに
     SPI.transfer(buf[i]);
     digitalWrite(SS,HIGH); //通信状態を非アクティブに
   }
-  //digitalWrite(SS,HIGH); //通信状態を非アクティブに
+  
+  SPI.endTransaction();
 
-  //ある程度遅延を入れないと安定しない。
-  delay(10);
+
+  
+  delay(1);
 }
