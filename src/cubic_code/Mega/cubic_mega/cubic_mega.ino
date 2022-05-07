@@ -5,69 +5,69 @@
 // SCK 52
 // SS 53
 
-SPISettings mySPISettings = SPISettings(8000000, MSBFIRST, SPI_MODE0);
+SPISettings mySPISettings = SPISettings(4000000, MSBFIRST, SPI_MODE0);
 
 #include <ros.h>
-#include <std_msgs/Int8MultiArray.h>
+#include <std_msgs/UInt8MultiArray.h>
 
 #define ENABLE_PIN 2
 
 // PWM出力のパラメータ初期値
-// 回転方向：0か1, Duty比(%)：0～100
+// 回転方向：0か1, Duty比(%)：0～254
 uint8_t buf[16];
 
 ros::NodeHandle nh;
 
-std_msgs::Int8MultiArray order0, order1, order2, order3, order4, order5, order6, order7;
+std_msgs::UInt8MultiArray order0, order1, order2, order3, order4, order5, order6, order7;
 
-void get_order0(const std_msgs::Int8MultiArray& order0) {
+void get_order0(const std_msgs::UInt8MultiArray& order0) {
   buf[0] = order0.data[0];
   buf[1] = order0.data[1];
 }
 
-void get_order1(const std_msgs::Int8MultiArray& order1) {
+void get_order1(const std_msgs::UInt8MultiArray& order1) {
   buf[2] = order1.data[0];
   buf[3] = order1.data[1];
 }
 
-void get_order2(const std_msgs::Int8MultiArray& order2) {
+void get_order2(const std_msgs::UInt8MultiArray& order2) {
   buf[4] = order2.data[0];
   buf[5] = order2.data[1];
 }
 
-void get_order3(const std_msgs::Int8MultiArray& order3) {
+void get_order3(const std_msgs::UInt8MultiArray& order3) {
   buf[6] = order3.data[0];
   buf[7] = order3.data[1];
 }
 
-void get_order4(const std_msgs::Int8MultiArray& order4) {
+void get_order4(const std_msgs::UInt8MultiArray& order4) {
   buf[8] = order4.data[0];
   buf[9] = order4.data[1];
 }
 
-void get_order5(const std_msgs::Int8MultiArray& order5) {
+void get_order5(const std_msgs::UInt8MultiArray& order5) {
   buf[10] = order5.data[0];
   buf[11] = order5.data[1];
 }
 
-void get_order6(const std_msgs::Int8MultiArray& order6) {
+void get_order6(const std_msgs::UInt8MultiArray& order6) {
   buf[12] = order6.data[0];
   buf[13] = order6.data[1];
 }
 
-void get_order7(const std_msgs::Int8MultiArray& order7) {
+void get_order7(const std_msgs::UInt8MultiArray& order7) {
   buf[14] = order7.data[0];
   buf[15] = order7.data[1];
 }
 
-ros::Subscriber<std_msgs::Int8MultiArray> sub_order0("motor0", get_order0);
-ros::Subscriber<std_msgs::Int8MultiArray> sub_order1("motor1", get_order1);
-ros::Subscriber<std_msgs::Int8MultiArray> sub_order2("motor2", get_order2);
-ros::Subscriber<std_msgs::Int8MultiArray> sub_order3("motor3", get_order3);
-ros::Subscriber<std_msgs::Int8MultiArray> sub_order4("motor4", get_order4);
-ros::Subscriber<std_msgs::Int8MultiArray> sub_order5("motor5", get_order5);
-ros::Subscriber<std_msgs::Int8MultiArray> sub_order6("motor6", get_order6);
-ros::Subscriber<std_msgs::Int8MultiArray> sub_order7("motor7", get_order7);
+ros::Subscriber<std_msgs::UInt8MultiArray> sub_order0("motor0", get_order0);
+ros::Subscriber<std_msgs::UInt8MultiArray> sub_order1("motor1", get_order1);
+ros::Subscriber<std_msgs::UInt8MultiArray> sub_order2("motor2", get_order2);
+ros::Subscriber<std_msgs::UInt8MultiArray> sub_order3("motor3", get_order3);
+ros::Subscriber<std_msgs::UInt8MultiArray> sub_order4("motor4", get_order4);
+ros::Subscriber<std_msgs::UInt8MultiArray> sub_order5("motor5", get_order5);
+ros::Subscriber<std_msgs::UInt8MultiArray> sub_order6("motor6", get_order6);
+ros::Subscriber<std_msgs::UInt8MultiArray> sub_order7("motor7", get_order7);
 
 void setup() {
   digitalWrite(ENABLE_PIN, HIGH); // 動作開始
@@ -103,7 +103,7 @@ void setup() {
   nh.subscribe(sub_order7);
   
   SPI.begin(); //SPI通信開始
-  SPI.setClockDivider(SPI_CLOCK_DIV2); // SPI通信速度を8MHzに設定
+  //SPI.setClockDivider(SPI_CLOCK_DIV2); // SPI通信速度を8MHzに設定
   pinMode(SS,OUTPUT); // SSピンを出力用に設定
   digitalWrite(SS,HIGH); //通信状態を非アクティブに
 }
@@ -126,5 +126,5 @@ void loop() {
   
   SPI.endTransaction();
 
-  delay(1);
+  delay(2);
 }
