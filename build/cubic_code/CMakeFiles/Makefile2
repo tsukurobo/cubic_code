@@ -60,6 +60,43 @@ CMAKE_SOURCE_DIR = /home/shoh/cubic_code/src/cubic_code
 CMAKE_BINARY_DIR = /home/shoh/cubic_code/build/cubic_code
 
 #=============================================================================
+# Target rules for target CMakeFiles/omni.dir
+
+# All Build rule for target.
+CMakeFiles/omni.dir/all:
+	$(MAKE) -f CMakeFiles/omni.dir/build.make CMakeFiles/omni.dir/depend
+	$(MAKE) -f CMakeFiles/omni.dir/build.make CMakeFiles/omni.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/shoh/cubic_code/build/cubic_code/CMakeFiles --progress-num=12,13 "Built target omni"
+.PHONY : CMakeFiles/omni.dir/all
+
+# Include target in all.
+all: CMakeFiles/omni.dir/all
+
+.PHONY : all
+
+# Build rule for subdir invocation for target.
+CMakeFiles/omni.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/shoh/cubic_code/build/cubic_code/CMakeFiles 2
+	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/omni.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/shoh/cubic_code/build/cubic_code/CMakeFiles 0
+.PHONY : CMakeFiles/omni.dir/rule
+
+# Convenience name for target.
+omni: CMakeFiles/omni.dir/rule
+
+.PHONY : omni
+
+# clean rule for target.
+CMakeFiles/omni.dir/clean:
+	$(MAKE) -f CMakeFiles/omni.dir/build.make CMakeFiles/omni.dir/clean
+.PHONY : CMakeFiles/omni.dir/clean
+
+# clean rule for target.
+clean: CMakeFiles/omni.dir/clean
+
+.PHONY : clean
+
+#=============================================================================
 # Target rules for target CMakeFiles/std_msgs_generate_messages_nodejs.dir
 
 # All Build rule for target.

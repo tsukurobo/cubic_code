@@ -56,18 +56,6 @@ CMAKE_BINARY_DIR = /home/shoh/cubic_code/build/cubic_code
 #=============================================================================
 # Targets provided globally by CMake.
 
-# Special rule for the target install/strip
-install/strip: preinstall
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Installing the project stripped..."
-	/usr/bin/cmake -DCMAKE_INSTALL_DO_STRIP=1 -P cmake_install.cmake
-.PHONY : install/strip
-
-# Special rule for the target install/strip
-install/strip/fast: preinstall/fast
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Installing the project stripped..."
-	/usr/bin/cmake -DCMAKE_INSTALL_DO_STRIP=1 -P cmake_install.cmake
-.PHONY : install/strip/fast
-
 # Special rule for the target rebuild_cache
 rebuild_cache:
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running CMake to regenerate build system..."
@@ -89,6 +77,18 @@ test:
 test/fast: test
 
 .PHONY : test/fast
+
+# Special rule for the target install/strip
+install/strip: preinstall
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Installing the project stripped..."
+	/usr/bin/cmake -DCMAKE_INSTALL_DO_STRIP=1 -P cmake_install.cmake
+.PHONY : install/strip
+
+# Special rule for the target install/strip
+install/strip/fast: preinstall/fast
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Installing the project stripped..."
+	/usr/bin/cmake -DCMAKE_INSTALL_DO_STRIP=1 -P cmake_install.cmake
+.PHONY : install/strip/fast
 
 # Special rule for the target install/local
 install/local: preinstall
@@ -166,6 +166,19 @@ preinstall/fast:
 depend:
 	$(CMAKE_COMMAND) -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
 .PHONY : depend
+
+#=============================================================================
+# Target rules for targets named omni
+
+# Build rule for target.
+omni: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 omni
+.PHONY : omni
+
+# fast build rule for target.
+omni/fast:
+	$(MAKE) -f CMakeFiles/omni.dir/build.make CMakeFiles/omni.dir/build
+.PHONY : omni/fast
 
 #=============================================================================
 # Target rules for targets named std_msgs_generate_messages_nodejs
@@ -479,15 +492,43 @@ gtest/fast:
 	$(MAKE) -f gtest/googlemock/gtest/CMakeFiles/gtest.dir/build.make gtest/googlemock/gtest/CMakeFiles/gtest.dir/build
 .PHONY : gtest/fast
 
+src/omni.o: src/omni.cpp.o
+
+.PHONY : src/omni.o
+
+# target to build an object file
+src/omni.cpp.o:
+	$(MAKE) -f CMakeFiles/omni.dir/build.make CMakeFiles/omni.dir/src/omni.cpp.o
+.PHONY : src/omni.cpp.o
+
+src/omni.i: src/omni.cpp.i
+
+.PHONY : src/omni.i
+
+# target to preprocess a source file
+src/omni.cpp.i:
+	$(MAKE) -f CMakeFiles/omni.dir/build.make CMakeFiles/omni.dir/src/omni.cpp.i
+.PHONY : src/omni.cpp.i
+
+src/omni.s: src/omni.cpp.s
+
+.PHONY : src/omni.s
+
+# target to generate assembly for a file
+src/omni.cpp.s:
+	$(MAKE) -f CMakeFiles/omni.dir/build.make CMakeFiles/omni.dir/src/omni.cpp.s
+.PHONY : src/omni.cpp.s
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
 	@echo "... all (the default if no target is provided)"
 	@echo "... clean"
 	@echo "... depend"
-	@echo "... install/strip"
 	@echo "... rebuild_cache"
 	@echo "... test"
+	@echo "... install/strip"
+	@echo "... omni"
 	@echo "... std_msgs_generate_messages_nodejs"
 	@echo "... std_msgs_generate_messages_lisp"
 	@echo "... install/local"
@@ -516,6 +557,9 @@ help:
 	@echo "... gmock"
 	@echo "... gtest_main"
 	@echo "... gtest"
+	@echo "... src/omni.o"
+	@echo "... src/omni.i"
+	@echo "... src/omni.s"
 .PHONY : help
 
 

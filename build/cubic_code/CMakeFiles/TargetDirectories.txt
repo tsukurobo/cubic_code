@@ -1,6 +1,7 @@
-/home/shoh/cubic_code/build/cubic_code/CMakeFiles/install/strip.dir
 /home/shoh/cubic_code/build/cubic_code/CMakeFiles/rebuild_cache.dir
 /home/shoh/cubic_code/build/cubic_code/CMakeFiles/test.dir
+/home/shoh/cubic_code/build/cubic_code/CMakeFiles/install/strip.dir
+/home/shoh/cubic_code/build/cubic_code/CMakeFiles/omni.dir
 /home/shoh/cubic_code/build/cubic_code/CMakeFiles/std_msgs_generate_messages_nodejs.dir
 /home/shoh/cubic_code/build/cubic_code/CMakeFiles/std_msgs_generate_messages_lisp.dir
 /home/shoh/cubic_code/build/cubic_code/CMakeFiles/install/local.dir

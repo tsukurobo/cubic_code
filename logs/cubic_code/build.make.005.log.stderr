@@ -1,0 +1,32 @@
+[01m[K/home/shoh/cubic_code/src/cubic_code/src/omni.cpp:[m[K In function ‘[01m[Kint main(int, char**)[m[K’:
+[01m[K/home/shoh/cubic_code/src/cubic_code/src/omni.cpp:62:29:[m[K [01;31m[Kerror: [m[K‘[01m[Kmsgs[m[K’ is not a member of ‘[01m[Kstd[m[K’
+     pub = nh.advertise<std::[01;31m[Kmsgs[m[K::Int16MultiArray>("topic", 1);
+                             [01;31m[K^~~~[m[K
+[01m[K/home/shoh/cubic_code/src/cubic_code/src/omni.cpp:62:29:[m[K [01;31m[Kerror: [m[K‘[01m[Kmsgs[m[K’ is not a member of ‘[01m[Kstd[m[K’
+[01m[K/home/shoh/cubic_code/src/cubic_code/src/omni.cpp:62:14:[m[K [01;31m[Kerror: [m[Kparse error in template argument list
+     pub = nh.[01;31m[Kadvertise<std::msgs::Int16MultiArray>[m[K("topic", 1);
+              [01;31m[K^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[m[K
+[01m[K/home/shoh/cubic_code/src/cubic_code/src/omni.cpp:62:62:[m[K [01;31m[Kerror: [m[Kno matching function for call to ‘[01m[Kros::NodeHandle::advertise<<expression error> >(const char [6], int)[m[K’
+     pub = nh.advertise<std::msgs::Int16MultiArray>("topic", 1[01;31m[K)[m[K;
+                                                              [01;31m[K^[m[K
+In file included from [01m[K/opt/ros/melodic/include/ros/ros.h:45:0[m[K,
+                 from [01m[K/home/shoh/cubic_code/src/cubic_code/src/omni.cpp:1[m[K:
+[01m[K/opt/ros/melodic/include/ros/node_handle.h:249:15:[m[K [01;36m[Knote: [m[Kcandidate: template<class M> ros::Publisher ros::NodeHandle::advertise(const string&, uint32_t, bool)
+     Publisher [01;36m[Kadvertise[m[K(const std::string& topic, uint32_t queue_size, bool latch = false)
+               [01;36m[K^~~~~~~~~[m[K
+[01m[K/opt/ros/melodic/include/ros/node_handle.h:249:15:[m[K [01;36m[Knote: [m[K  template argument deduction/substitution failed:
+[01m[K/home/shoh/cubic_code/src/cubic_code/src/omni.cpp:62:62:[m[K [01;31m[Kerror: [m[Ktemplate argument 1 is invalid
+     pub = nh.advertise<std::msgs::Int16MultiArray>("topic", 1[01;31m[K)[m[K;
+                                                              [01;31m[K^[m[K
+In file included from [01m[K/opt/ros/melodic/include/ros/ros.h:45:0[m[K,
+                 from [01m[K/home/shoh/cubic_code/src/cubic_code/src/omni.cpp:1[m[K:
+[01m[K/opt/ros/melodic/include/ros/node_handle.h:315:13:[m[K [01;36m[Knote: [m[Kcandidate: template<class M> ros::Publisher ros::NodeHandle::advertise(const string&, uint32_t, const SubscriberStatusCallback&, const SubscriberStatusCallback&, const VoidConstPtr&, bool)
+   Publisher [01;36m[Kadvertise[m[K(const std::string& topic, uint32_t queue_size,
+             [01;36m[K^~~~~~~~~[m[K
+[01m[K/opt/ros/melodic/include/ros/node_handle.h:315:13:[m[K [01;36m[Knote: [m[K  template argument deduction/substitution failed:
+[01m[K/home/shoh/cubic_code/src/cubic_code/src/omni.cpp:62:62:[m[K [01;31m[Kerror: [m[Ktemplate argument 1 is invalid
+     pub = nh.advertise<std::msgs::Int16MultiArray>("topic", 1[01;31m[K)[m[K;
+                                                              [01;31m[K^[m[K
+make[2]: *** [CMakeFiles/omni.dir/src/omni.cpp.o] Error 1
+make[1]: *** [CMakeFiles/omni.dir/all] Error 2
+make: *** [all] Error 2
