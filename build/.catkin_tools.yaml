@@ -1,6 +1,0 @@
-devel_space: /home/shoh/cubic_code/devel
-install: false
-install_space: /home/shoh/cubic_code/install
-profile: default
-source_space: /home/shoh/cubic_code/src
-workspace: /home/shoh/cubic_code

@@ -1,4 +1,0 @@
-[35m[1mScanning dependencies of target omni[0m
-[ 50%] [32mBuilding CXX object CMakeFiles/omni.dir/src/omni.cpp.o[0m
-[100%] [32m[1mLinking CXX executable /home/shoh/cubic_code/devel/.private/cubic_code/lib/cubic_code/omni[0m
-[100%] Built target omni
